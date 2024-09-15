@@ -1,7 +1,31 @@
-1. 說明 blob, tree, commit, branch, head 分別是什麼
+1. 說明 blob, tree, commit, branch, head 分別是什麼?
+2. 紀錄在 git repo 操作過程中，.git 檔案夾裡的變化，看看你可以觀察到什麼?
+   - git 的存放方式類似 unix 的檔案系統，內容皆以 tree 或 blob 物件儲存
+    
+    blob: (Binary large object):
+     - blob 物件在 git 系統中的角色，約等於 unix 檔案系統的 file 或 inodes
+     - blob 是 immutable，創建後便不能進行修改
+     
+    blob operation
+     - `git add` 檔案的時候，就會產生一個由SHA-1加密後的blob物件，存放在`.git/objects`路徑中。
+     - blob會紀錄檔案的內容，但不會紀錄檔名！
+     - 由於是存放內容，因此若是建立空的資料夾(directory)，則不會產生新的blob物件
+ 
+    tree: 
+     - tree 物件在 git 系統中的角色，約等於 unix 檔案系統的 directory
+     - tree 是一個物件，有許多指向其他 blob 和 tree 的 pointer
+     - tree 用來記錄了資料夾名稱和檔案名
+     
+    tree operation:
+     - 由於 blob 物件只記錄檔案內容，因此若建立了 test.c 和 test2.c 兩個相同內容的檔案，在被 tree 和 blob 紀錄時，會是tree object中兩個檔名指向同一個blob object
 
-
-2. 紀錄在 git repo 操作過程中，.git 檔案夾裡的變化，看看你可以觀察到什麼
+    commit: 
+     - commit 指向一棵tree，將其標記為專案在某個時間點的樣子。
+     - commit 包含有關該時間點的資訊，
+     - 例如: timestamp、自上次 commit 更改的作者、指向上一次 commit 的 pointer
+   - branch: 
+   - head: 
+ 
 
 
 3. commit message 應該怎麼寫比較好？應該有什麼 `style` 嗎？
