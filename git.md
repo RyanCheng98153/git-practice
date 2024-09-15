@@ -17,16 +17,32 @@
      - tree 用來記錄了資料夾名稱和檔案名
      
     tree operation:
+     - `git add`: 紀錄檔案的檔案名稱和路徑
      - 由於 blob 物件只記錄檔案內容，因此若建立了 test.c 和 test2.c 兩個相同內容的檔案，在被 tree 和 blob 紀錄時，會是tree object中兩個檔名指向同一個blob object
 
     commit: 
      - commit 指向一棵tree，將其標記為專案在某個時間點的樣子。
      - commit 包含有關該時間點的資訊，
-     - 例如: timestamp、自上次 commit 更改的作者、指向上一次 commit 的 pointer
-   - branch: 
-   - head: 
- 
+     - 例如: timestamp、作者、提交者資訊、提交訊息(commit message)、指向上一次 commit 的 pointer
+    
+    commit operation: 
+     - `git commit`: 就是創建一個 commit 物件
+     - 記錄方式：我認為有點像是，資訊安全的增量備份(Incremental Backup)
+      
+    branch: 
+     - branch，本質上是指向 commit 物件的可變指標
+    
+    branch operation:
+     - `git branch testing`: 新建一個分支指標(testing)指向當前 commit 物件
+   
+    head: 
+     - head 在 git 中，是一個指向你正在工作中的本地 branch 的 pointer
+     - head 可視為當前 branch 的別名
 
+    head operation: 
+     - 運行 `git branch testing` : 不代表將 head 切換到 testing，只是建立一個新的分支指標(testing)
+     - 運行 `git checkout testing` : 將 head pointer 指向 testing branch
+     - 運行 `git commit` 時: 將會把 commit list 中 head pointer 指向的 branch pointer 的 commit 再往前推一格物件，並且 head 隨著 head 指向的 branch 指標也指向新的 commit 物件
 
 3. commit message 應該怎麼寫比較好？應該有什麼 `style` 嗎？
     - commit message convention
@@ -47,4 +63,5 @@
       - ex: `feat! (login-page): add confirm function for login`
 
 > References:
+> - https://iissnan.com/progit/html/zh-tw/ch9_2.html
 > - https://www.conventionalcommits.org/en/v1.0.0/
