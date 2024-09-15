@@ -42,7 +42,8 @@
     head operation: 
      - 運行 `git branch testing` : 不代表將 head 切換到 testing，只是建立一個新的分支指標(testing)
      - 運行 `git checkout testing` : 將 head pointer 指向 testing branch
-     - 運行 `git commit` 時: 將會把 commit list 中 head pointer 指向的 branch pointer 的 commit 再往前推一格物件，並且 head 隨著 head 指向的 branch 指標也指向新的 commit 物件
+     - 運行 `git commit` 時: 將會把 commit list 中 head pointer 指向的 branch pointer 的 commit 再往前推一格物件，並且 head 隨著 head 指向的 branch 指標也指向新的 commit 物件 (相關內容點擊下方示意圖)
+     - [head 和 commit、branch 之間的互動示意圖](#my-custom-block)
 
 3. commit message 應該怎麼寫比較好？應該有什麼 `style` 嗎？
     - commit message convention
@@ -61,6 +62,15 @@
     - `<description>`: **簡短**描述
     - `!`: 表示注意
       - ex: `feat! (login-page): add confirm function for login`
+
+<a id="my-custom-block"></a>
+**Note:** head 和 commit、branch 之間的互動示意圖
+|  checkout testing (branch testing)   |  git commit (branch testing)  |
+|  :----:  |  :----:  |
+|  ![checkout testing](./src/figs/checkout_tesing.png)  |  ![commit testing](./src/figs/commit_testing.png) |
+| **checkout master (branch master)**  | **git commit (branch master)** |
+|  ![checkout master](./src/figs/checkout_master.png)   |  ![commit master](./src/figs/commit_master.png)   |
+  
 
 > References:
 > - https://iissnan.com/progit/html/zh-tw/ch9_2.html
