@@ -75,3 +75,5 @@
 > References:
 > - https://iissnan.com/progit/html/zh-tw/ch9_2.html
 > - https://www.conventionalcommits.org/en/v1.0.0/
+> - Branch Pictures
+> - https://iissnan.com/progit/html/zh-tw/ch3_1.html
