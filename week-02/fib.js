@@ -1,14 +1,14 @@
-function test( fib ){
+function test( func ){
   // a reusable testing function
-  console.time(`function ${fib.name}() `);
-  fib(0); // 0
-  fib(1); // 1
-  fib(5); // 5
-  fib(10); // 55
-  fib(20); // 6765
-  fib(30); // 832040 
+  console.time(`function ${func.name}() `);
+  func(0); // 0
+  func(1); // 1
+  func(5); // 5
+  func(10); // 55
+  func(20); // 6765
+  func(30); // 832040 
   // console.log(fib(40)); // 102334155
-  console.timeEnd(`function ${fib.name}() `);
+  console.timeEnd(`function ${func.name}() `);
 }
 
 function fib(n) {
