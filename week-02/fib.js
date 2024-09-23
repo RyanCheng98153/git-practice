@@ -1,6 +1,6 @@
 function test( func ){
   // a reusable testing function
-  console.time(`function ${func.name}() `);
+  console.time(`function ${func.name}()\t`);
   func(0); // 0
   func(1); // 1
   func(5); // 5
@@ -8,7 +8,7 @@ function test( func ){
   func(20); // 6765
   func(30); // 832040 
   // console.log(fib(40)); // 102334155
-  console.timeEnd(`function ${func.name}() `);
+  console.timeEnd(`function ${func.name}()\t`);
 }
 
 function fib(n) {
@@ -19,10 +19,12 @@ function fib(n) {
   return fib(n-1) + fib(n-2)
 }
 
-function fib(n) {
+function fib2(n) {
   // TODO: implement fibonacci
   return n<2 ? n : fib(n-1) + fib(n-2)
 }
 
+test(fib)
 test(fib2)
 test(fib)
+test(fib2)
