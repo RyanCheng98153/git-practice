@@ -24,7 +24,7 @@ function fib2(n) {
   return n<2 ? n : fib(n-1) + fib(n-2)
 }
 
-test(fib)
-test(fib2)
-test(fib)
-test(fib2)
+for ( const x of Array(3).keys() ) {
+  test(fib)
+  test(fib2)
+}
