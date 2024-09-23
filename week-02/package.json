@@ -1,0 +1,21 @@
+{
+  "name": "week-02",
+  "version": "1.0.0",
+  "description": "nodeJs practice",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RyanCheng98153/git-practice.git"
+  },
+  "author": "RyanCheng98153",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RyanCheng98153/git-practice/issues"
+  },
+  "homepage": "https://github.com/RyanCheng98153/git-practice#readme",
+  "type": "module"
+}
