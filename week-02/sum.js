@@ -32,42 +32,68 @@ function test( func, value ){
     var start = performance.now();
     let sum = func(value); // 11
     var end = performance.now();
-    console.log(end - start)
+    // console.log(end - start)
     return end - start;
 }
 
-let time = [
-    {"map": 0},
-    {"reduce": 0},
-    {"forloop": 0},
-    {"recursive": 0}
-]
-
-for (const iter of Array(1).keys() ){
-    let val = test(sumMap, [10, 2, 102, 43])
-    console.log(val)
+// 喚醒CPU
+for (const iter of Array(100).keys() ){
+    let val = test(sumMap, [...Array(5).keys()])
+    // console.log(val)
 }
 
-let iters = 100
+let iters = 1000
 
-for ( const x of Array(3).keys() ){
+let map_time = 0
+let reduce_time = 0
+let forloop_time = 0
+// let recursive_time = 0
+
+for ( const x of Array(iters).keys() ){
     let value = [...Array(10000).keys()].map(i => i + 1);
-    if ( true ){
-        value = [...Array(10000).keys()].map(i => i + 1);
-    }
     
-    time["map"] += test(sumMap, value)
-    time["reduce"] += test(sumReduce, value)
-    time["forloop"] += test(sumForloop, value)
-    // time['recursive'] += test(sumRecursive, value)
+    map_time += test(sumMap, value)
+    reduce_time += test(sumReduce, value)
+    forloop_time += test(sumForloop, value)
+    // recursive_time += test(sumRecursive, value)
 }
+console.log( `map:     ${ (map_time / iters).toFixed(6) } ms` )
+console.log( `reduce:  ${ (reduce_time / iters).toFixed(6) } ms` )
+console.log( `forloop: ${ (forloop_time / iters).toFixed(6) } ms` )
+console.log("")
 
-console.log( `${time['map'] / iters} (${time['map']} / ${iters})` )
-console.log( `${time['reduce'] / iters} (${time['reduce']} / ${iters})` )
-console.log( `${time['forloop'] / iters} (${time['forloop']} / ${iters})` )
-// console.log( `${time['recursive'] / iters} (${time['recursive']} / ${iters})` )
+
+
+// console.log( `${recursive_time / iters} (${recursive_time} / ${iters})` )
 
 /* 筆記：
-*   當執行 10000 次 recursive 時，maximum out of recursive 
-* 
+*   當執行 10000 次 recursive 時，raise RangeError: Maximum call stack size exceeded
+    [ 實驗一 ]
+    執行 1~10000 100 次：
+    喚醒CPU: sumMap 加 5 items 1000 次
+    Exp1:                   Exp2:                   Exp3:
+        map:     0.050444 ms    map:     0.052417 ms    map:     0.052131 ms
+        reduce:  0.040643 ms    reduce:  0.041612 ms    reduce:  0.041217 ms
+        forloop: 0.009195 ms    forloop: 0.009570 ms    forloop: 0.009143 ms
+    [ 實驗二 ]
+    執行 1~10000 100 次：
+    喚醒CPU: sumMap 加 1~10000 items 1000 次
+    Exp1:                   Exp2:                   Exp3:
+        map:     0.051932 ms    map:     0.050111 ms    map:     0.052597 ms
+        reduce:  0.041498 ms    reduce:  0.039975 ms    reduce:  0.041766 ms
+        forloop: 0.008743 ms    forloop: 0.008388 ms    forloop: 0.008619 ms
+    [ 實驗三 ]
+    執行 1~10000 100 次：
+    喚醒CPU: sumMap 加 1~100000 items 1000 次
+    Exp1:                   Exp2:                   Exp3:
+        map:     0.055883 ms    map:     0.059683 ms    map:     0.057866 ms
+        reduce:  0.040884 ms    reduce:  0.042708 ms    reduce:  0.042311 ms
+        forloop: 0.008498 ms    forloop: 0.008908 ms    forloop: 0.008879 ms
+    
+    Note: 當喚醒CPU 的時間適量時，實驗函式所需時間減少
+          當喚醒CPU 的時間太長時，實驗函式時間反而增加
+    
+    
+        
+        
 */
