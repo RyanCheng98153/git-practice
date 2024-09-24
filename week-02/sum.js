@@ -62,8 +62,6 @@ console.log( `reduce:  ${ (reduce_time / iters).toFixed(6) } ms` )
 console.log( `forloop: ${ (forloop_time / iters).toFixed(6) } ms` )
 console.log("")
 
-
-
 // console.log( `${recursive_time / iters} (${recursive_time} / ${iters})` )
 
 /* 筆記：

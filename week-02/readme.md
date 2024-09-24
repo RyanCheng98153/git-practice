@@ -57,6 +57,22 @@ output: html_document
  - NodeJs 是 Ryan Dahl 開發的，npm 是 Isaac Z. Schlueter
  - Isaac Z. Schlueter 是第一批 NodeJs Contributors，並在Ryan Dahl 離開 NodeJs 開發 Deno 後，接手 NodeJs 的 Project Leader
  (以上擷取自 Isaac Z. Schlueter 的 Resume https://izs.me/resume)
+
+### 實驗紀錄
+> 當執行 10000 次 recursive 時，
+> raise RangeError: Maximum call stack size exceeded
+> 因此沒有使用 recursive 進行測試
+
+|         | 實驗一      | 實驗二         | 實驗三         |
+| ------- | ----------- | -------------- | -------------- |
+| warmup  | sum 5 item  | sum 10000 item | sum 100000item |
+| map     | 0.050444 ms | 0.050111 ms    | 0.059683 ms    |
+| reduce  | 0.040643 ms | 0.041498 ms    | 0.042708 ms    |
+| forloop | 0.009195 ms | 0.008619       | 0.008879       |
+
+Note:   當喚醒CPU 的時間適量時，實驗函式所需時間減少
+        當喚醒CPU 的時間太長時，實驗函式時間反而增加
+
 ###  Reference: 
 - NodeJS Version Release:
     https://nodejs.org/en/about/previous-releases
