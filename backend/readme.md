@@ -1,4 +1,5 @@
 # Backend project
+- Note 聲明: 由於筆記部分較多，太占用版面的筆記，會在下方 Note 區整理
 1. 觀察 npm install express 前後的變化
    - npm install 之前
      - `npm init` 練立了 package.json 記錄了此 project 的資訊 
@@ -62,7 +63,29 @@
       - index.d.ts: 該 module 的 typescript 版本 declare 宣告聲明檔案
       - .git: git 記錄檔案等等
       - module 開發者想加的其它內容
-3. 
+3. Port number 怎麼以環境變數 .env 來設定
+   - 需要先安裝 dotenv 套建
+     - `npm install dotenv`
+   -  引入 dotenv 套件
+     - `require('dotenv').config();`
+   - 建立 .env 檔案
+    ```
+    PORT=4000
+    ```
+   - 使用方式
+     - `process.env.PORT` 或 process.env['PORT']
+     - 可以找出 .env 檔案中的 Port變數
+4. 哪些檔案不該被放上 github repo
+   - .env
+     - 包含環境變數，也可能包含資料庫或某些付費功能的 API-KEY
+     - 非常不建議被推上 github repo
+   - node modules 資料夾
+     - 其中內容過多，檔案過大，
+     - 並且是可以被 npm install package.json 下載回來的
+     - 不建議推上 github repo 
+   - assets 資料夾
+     - 內容都是放入圖片或其它檔案，由於檔案太大，建議使用資料庫存取
+     - 不建議推上 github repo
 
 ### Note: 
 Package Json 參數說明
