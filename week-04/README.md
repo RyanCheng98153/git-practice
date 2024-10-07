@@ -1,7 +1,11 @@
 ## 建立 EC2 主機與部屬 Web Server
 1. 在 Readme 中提供 instance 的 public IP，我會連線過去檢查，所以要保持主機是一直在啟動中
 2. 什麼是 instance type?
-    - Instance type 是 AWS EC2 中虛擬機器的配置。它定義了計算、記憶體和儲存資源的組合，不同的 instance type 適合不同的應用需求。例如，t2.micro 是入門級實例，適合小型網站或測試環境。
+    - Instance type (執行個體類型) 是 AWS EC2 中虛擬機器的配置，定義了計算、記憶體和儲存資源的組合。
+    - Amazon EC2 提供各式各樣的最佳化 instance type，滿足使用者不同的使用案例。
+    - Instance type 由不同的 CPU、記憶體、儲存體和聯網容量組合而成，讓您為應用程式彈性選擇適當的資源組合。
+    - 每種 Instance type 都包括一或多種執行個體大小 (Instance size)，能夠讓使用者根據目標工作的負載需求以擴展 instance 資源。
+    - ex: t2.micro 是入門級實例，適合小型網站或測試環境。
 3. 什麼是 Nginx？有哪些用途與特性？
     - Nginx 是一款高效能的網頁伺服器，常用於反向代理、負載平衡和靜態文件提供。它以輕量化、高併發著稱，適合處理大量的同時連線。
 4. pm2 套件是什麼？有什麼用處？
