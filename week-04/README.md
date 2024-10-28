@@ -1,5 +1,6 @@
 ## 建立 EC2 主機與部屬 Web Server
 1. 在 Readme 中提供 instance 的 public IP，我會連線過去檢查，所以要保持主機是一直在啟動中
+    - 54.253.90.191
 2. 什麼是 instance type?
     - Instance type (執行個體類型) 是 AWS EC2 中虛擬機器的配置，定義了計算、記憶體和儲存資源的組合。
     - Amazon EC2 提供各式各樣的最佳化 instance type，滿足使用者不同的使用案例。
